@@ -1,0 +1,9 @@
+
+.container {
+    background-image: url(/images/recipe-website-discovering.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+     /* or any height you need */
+  }
