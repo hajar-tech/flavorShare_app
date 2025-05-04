@@ -7,7 +7,7 @@ import { RecipeDetailComponent } from './features/recipe/recipe-detail/recipe-de
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavbareComponent,HomeComponent,RecipeListComponent,RecipeDetailComponent],
+  imports: [RouterOutlet,NavbareComponent,HomeComponent,RecipeListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
