@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RecipeService, Recipe } from '../../../core/services/recipe.service';
-//import { CommentService, Comment } from '../../core/services/comment.service';
-//import { CommentComponent } from '../comment/comment.component';
+import { CommentService, Comment } from '../../../core/services/comment.service';
+import { CommentComponent } from '../comment/comment.component';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -29,7 +29,7 @@ export class RecipeDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private recipeService = inject(RecipeService);
-  //private commentService = inject(CommentService);
+  private commentService = inject(CommentService);
   private sanitizer = inject(DomSanitizer);
 
   ngOnInit(): void {
@@ -64,9 +64,9 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   loadComments(): void {
-   // this.commentService.getCommentsByRecipeId(this.recipeId).subscribe(comments => {
-   //   this.comments = comments;
-  //  });
+    this.commentService.getCommentsByRecipeId(this.recipeId).subscribe(comments => {
+      this.comments = comments;
+    });
   }
 
   processVideoUrl(): void {
@@ -112,12 +112,12 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   addComment(): void {
-   // if (this.userName.trim() && this.commentContent.trim()) {
-   //   this.commentService.addComment(this.recipeId, this.userName, this.commentContent);
+    if (this.userName.trim() && this.commentContent.trim()) {
+      this.commentService.addComment(this.recipeId, this.userName, this.commentContent);
       // Réinitialiser le formulaire
-   //   this.userName = '';
-   //   this.commentContent = '';
-  //  }
+      this.userName = '';
+      this.commentContent = '';
+   }
   }
 
   goBack(): void {
